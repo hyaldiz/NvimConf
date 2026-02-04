@@ -80,7 +80,7 @@ require("lazy").setup({
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
       require("nvim-tree").setup({})
-      vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
+      vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
     end,
   },
 })
