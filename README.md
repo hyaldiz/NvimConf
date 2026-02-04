@@ -2,15 +2,11 @@
 
 A minimal and clean **Neovim configuration** focused on C and C++ development using **clangd (LSP)**.
 
-This configuration provides:
-
-- LSP support via `clangd`
-- Plugin management with `lazy.nvim`
-- File explorer (`nvim-tree`)
-- Statusline (`lualine`)
-- Gruvbox theme
-- System clipboard integration
-
+  - init.lua (Neovim 0.11.x) - C/C++ + CMake + Makefile/Autotools
+  - LSP: clangd, cmake, autotools_ls
+  - Completion: nvim-cmp
+  - Formatting: conform.nvim (clang-format + optional cmake-format)
+  - Plugin manager: lazy.nvim (auto bootstrap)
 ---
 
 ## Requirements
@@ -105,7 +101,7 @@ Restart Neovim after plugin installation.
 
 ## C/C++ Setup (Important)
 
-For proper C/C++ and Qt support, your project should contain a `compile_commands.json` file in the project root.
+For proper C/C++ , your project should contain a `compile_commands.json` file in the project root.
 
 ### If using CMake:
 
@@ -113,63 +109,12 @@ For proper C/C++ and Qt support, your project should contain a `compile_commands
 cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ln -sf build/compile_commands.json compile_commands.json
 ```
-
-This allows clangd to correctly detect:
-
-- System headers
-- External libraries
-- Qt includes
-- Compiler flags
-
----
-
-## Qt Projects (Optional)
-
-If Qt is installed under a custom directory (e.g. `~/Qt/...`), configure CMake with:
+iler flags
 
 ```bash
 cmake -S . -B build \
-  -DCMAKE_PREFIX_PATH=$HOME/Qt/6.x.x/gcc_64 \
   -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ```
-
----
-
-## Verifying LSP
-
-Open a `.cpp` file and run:
-
-```vim
-:LspInfo
-```
-
-You should see:
-
-```
-clangd attached
-```
-
-If not attached:
-
-- Open Neovim from the project root directory
-- Ensure `compile_commands.json` exists
-- Verify `clangd` is installed
-
----
-
-## Useful Keybindings
-
-- `<leader>e` → Toggle file explorer
-- `Ctrl + x` then `Ctrl + o` → LSP completion (built-in)
-- `:LspInfo` → Check LSP status
-
----
-
-## Notes
-
-- Minimal and performance-focused setup
-- Designed for C/C++ development
-- Easy to extend with additional plugins
 
 ---
 
