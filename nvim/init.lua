@@ -23,6 +23,25 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = "a"
+
+-- -------------------------
+-- Diagnostic
+-- -------------------------
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 2,
+    prefix = "●", -- istersen "■" / "" vs.
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = "if_many",
+  },
+})
+
 -- -------------------------
 -- Lazy.nvim bootstrap
 -- -------------------------
